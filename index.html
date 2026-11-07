@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>나의 여행 지도 (My Travel Map) | 쿠사리님의 여행 허브</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="background-decor">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <header class="hero-header">
+    <div class="container">
+      <div class="badge-pill">✈️ Personal Travel Archive Hub</div>
+      <h1 class="hero-title">나의 여행 지도</h1>
+      <p class="hero-subtitle">
+        발길이 닿은 모든 곳을 기록하는 나만의 특별한 여행 아카이브.<br>
+        국내 방방곡곡부터 세계 각국, 그리고 정복한 100대 명산까지 한곳에서 관리하세요.
+      </p>
+
+      <!-- 종합 통합 통계 요약 바 -->
+      <div class="stats-overview">
+        <div class="stat-card">
+          <div class="stat-icon">🇰🇷</div>
+          <div class="stat-info">
+            <span class="stat-label">대한민국 방방곡곡</span>
+            <span class="stat-value" id="korea-stat">2 / 167 시·군 (1.2%)</span>
+          </div>
+          <div class="stat-progress">
+            <div class="stat-bar" style="width: 1.2%; background: linear-gradient(90deg, #10b981, #059669);"></div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">🌍</div>
+          <div class="stat-info">
+            <span class="stat-label">전 세계 탐험</span>
+            <span class="stat-value" id="world-stat">0 / 195 개국 (0.0%)</span>
+          </div>
+          <div class="stat-progress">
+            <div class="stat-bar" style="width: 0%; background: linear-gradient(90deg, #3b82f6, #1d4ed8);"></div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">⛰️</div>
+          <div class="stat-info">
+            <span class="stat-label">100대 명산 & 트래킹</span>
+            <span class="stat-value" id="mountain-stat">0 / 100 봉 (0.0%)</span>
+          </div>
+          <div class="stat-progress">
+            <div class="stat-bar" style="width: 0%; background: linear-gradient(90deg, #8b5cf6, #6d28d9);"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="container">
+      <div class="section-title-wrap">
+        <h2 class="section-title">🧭 3대 여행 테마 아카이브</h2>
+        <p class="section-desc">목적에 맞게 독립적으로 관리되는 전문 여행 지도를 선택해 보세요.</p>
+      </div>
+
+      <div class="cards-grid">
+        <!-- 1. 대한민국 여행 지도 (운영 중) -->
+        <div class="app-card active-card">
+          <div class="card-status status-live">
+            <span class="status-dot"></span> LIVE 배포 완료
+          </div>
+          <div class="card-icon-wrap bg-emerald">
+            <span class="card-icon">🇰🇷</span>
+          </div>
+          <h3 class="card-title">대한민국 여행 지도</h3>
+          <p class="card-en-title">Korea Travel Map</p>
+          <p class="card-desc">
+            전국 167개 시·군 단위 정밀 지도에 5단계 방문 등급(거주·단골·숙박·당일)을 색칠하고, 전문 여행가 엄선 1,670개 10대 명소 체크리스트와 네이버 지도 링크, 메모를 저장합니다.
+          </p>
+
+          <ul class="card-features">
+            <li>✅ 167개 시·군 폴리곤 & 5단계 방문 레벨 색칠</li>
+            <li>✅ 시·군별 1~10위 우선순위 1,670개 필수 명소 & 네이버 지도</li>
+            <li>✅ 🎲 어디 갈까? 랜덤 추천기 & 🏷️ 지명 표시 토글</li>
+            <li>✅ 고화질 지도 다운로드 & 안전한 JSON 백업/복원</li>
+          </ul>
+
+          <div class="card-action">
+            <a href="https://korea-travel-map-ebon.vercel.app/" target="_blank" rel="noopener" class="btn btn-primary btn-emerald">
+              <span>🚀 대한민국 지도 열기</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- 2. 세계 여행 지도 (기획 중) -->
+        <div class="app-card planned-card">
+          <div class="card-status status-next">
+            <span class="status-dot"></span> 2단계 구축 제안
+          </div>
+          <div class="card-icon-wrap bg-blue">
+            <span class="card-icon">🌍</span>
+          </div>
+          <h3 class="card-title">세계 여행 지도</h3>
+          <p class="card-en-title">World Travel Map</p>
+          <p class="card-desc">
+            전 세계 195개국 인터랙티브 벡터 세계 지도에서 다녀온 나라와 대륙을 기록하고, 방문한 주요 도시, 세계문화유산, 랜드마크, 여권 스탬프 스타일의 여행 일지를 작성합니다.
+          </p>
+
+          <ul class="card-features">
+            <li>⏳ 전 세계 195개국 벡터 지도 렌더링 & 방문 국가 색칠</li>
+            <li>⏳ 6대륙 필터 (아시아, 유럽, 북미, 남미, 아프리카, 오세아니아)</li>
+            <li>⏳ 주요 국가별 대표 수도·관광도시 & 세계유산 큐레이션</li>
+            <li>⏳ 통화·비자 정보 & 나만의 세계 여행 버킷리스트</li>
+          </ul>
+
+          <div class="card-action">
+            <button class="btn btn-secondary" onclick="alert('세계 여행 지도(World Travel Map)는 현재 아키텍처 설계 단계입니다. 쿠사리님의 승인 후 바로 구축에 착수합니다!')">
+              <span>🌐 세계 지도 설계안 확인</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 3. 100대 명산 & 트래킹 지도 (기획 중) -->
+        <div class="app-card planned-card">
+          <div class="card-status status-purple">
+            <span class="status-dot"></span> 3단계 구축 제안
+          </div>
+          <div class="card-icon-wrap bg-purple">
+            <span class="card-icon">⛰️</span>
+          </div>
+          <h3 class="card-title">100대 명산 & 트래킹 지도</h3>
+          <p class="card-en-title">Mountain & Trekking Map</p>
+          <p class="card-desc">
+            산림청 및 블랙야크 선정 대한민국 100대 명산 완등 지도와 지리산·설악산 종주길, 전국 대표 둘레길·트래킹 코스를 지도 위 마커와 등정 인증 배지로 완성해 나갑니다.
+          </p>
+
+          <ul class="card-features">
+            <li>⏳ 산림청/블랙야크 100대 명산 위치 & 해발고도 지도 시각화</li>
+            <li>⏳ 완등률(%) 프로그레스 바 & 등정일자·정상석 인증 메모</li>
+            <li>⏳ 난이도별(초/중/고급) 및 계절별(단풍/설산/진달래) 코스 안내</li>
+            <li>⏳ 전국 대표 둘레길(제주올레, 지리산둘레길 등) 트래킹 코스</li>
+          </ul>
+
+          <div class="card-action">
+            <button class="btn btn-secondary" onclick="alert('100대 명산 & 트래킹 지도(Mountain Travel Map)는 3단계로 구축 예정입니다. 산림청 공인 데이터로 완벽히 준비하겠습니다!')">
+              <span>🥾 명산 지도 설계안 확인</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 아키텍처 장점 설명 섹션 -->
+      <div class="architecture-banner">
+        <div class="arch-icon">💡</div>
+        <div class="arch-text">
+          <h4>쿠사리님의 모듈러 허브(Hub & Spoke) 설계가 갖는 3대 장점</h4>
+          <div class="arch-points">
+            <div class="arch-point">
+              <strong>1. 무결한 안전성</strong>
+              <span>완성된 국내 지도는 단 한 줄의 코드 수정 없이 100% 원본 그대로 보존됩니다.</span>
+            </div>
+            <div class="arch-point">
+              <strong>2. 가벼운 속도 & 독립 관리</strong>
+              <span>세계 지도나 등산 지도의 방대한 지리 데이터가 섞이지 않아 로딩 속도가 최적화됩니다.</span>
+            </div>
+            <div class="arch-point">
+              <strong>3. 무한한 확장성</strong>
+              <span>향후 미식 투어 지도, 캠핑 지도 등 원하는 테마가 생기면 언제든 모듈처럼 추가할 수 있습니다.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 나의 여행 지도 (My Travel Map) · Designed for 쿠사리님 by 김비서</p>
+    </div>
+  </footer>
+</body>
+</html>
