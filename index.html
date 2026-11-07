@@ -100,10 +100,10 @@
           </div>
         </div>
 
-        <!-- 2. 세계 여행 지도 (기획 중) -->
-        <div class="app-card planned-card">
-          <div class="card-status status-next">
-            <span class="status-dot"></span> 2단계 구축 제안
+        <!-- 2. 세계 여행 지도 (운영 중) -->
+        <div class="app-card active-card">
+          <div class="card-status status-live">
+            <span class="status-dot"></span> LIVE 배포 완료
           </div>
           <div class="card-icon-wrap bg-blue">
             <span class="card-icon">🌍</span>
@@ -111,20 +111,21 @@
           <h3 class="card-title">세계 여행 지도</h3>
           <p class="card-en-title">World Travel Map</p>
           <p class="card-desc">
-            전 세계 195개국 인터랙티브 벡터 세계 지도에서 다녀온 나라와 대륙을 기록하고, 방문한 주요 도시, 세계문화유산, 랜드마크, 여권 스탬프 스타일의 여행 일지를 작성합니다.
+            전 세계 195개국 인터랙티브 벡터 세계 지도에서 다녀온 나라를 색칠하고, 방문한 주요 도시(베이징, 상하이, 도쿄, 뉴욕, 파리 등)와 도시별 대표 랜드마크 체크리스트를 관리합니다.
           </p>
 
           <ul class="card-features">
-            <li>⏳ 전 세계 195개국 벡터 지도 렌더링 & 방문 국가 색칠</li>
-            <li>⏳ 6대륙 필터 (아시아, 유럽, 북미, 남미, 아프리카, 오세아니아)</li>
-            <li>⏳ 주요 국가별 대표 수도·관광도시 & 세계유산 큐레이션</li>
-            <li>⏳ 통화·비자 정보 & 나만의 세계 여행 버킷리스트</li>
+            <li>✅ 전 세계 195개국 Natural Earth 벡터 지도 & 방문 색칠</li>
+            <li>✅ 국가별 주요 도시 선택 & 도시별 랜드마크 2단계 드릴다운</li>
+            <li>✅ 6대륙 필터 & 🎲 어디 갈까? 랜덤 추천기 & 국명 라벨 토글</li>
+            <li>✅ 📸 고화질 PNG 지도 다운로드 & 안전한 JSON 백업/복원</li>
           </ul>
 
           <div class="card-action">
-            <button class="btn btn-secondary" onclick="alert('세계 여행 지도(World Travel Map)는 현재 아키텍처 설계 단계입니다. 쿠사리님의 승인 후 바로 구축에 착수합니다!')">
-              <span>🌐 세계 지도 설계안 확인</span>
-            </button>
+            <a href="https://world-travel-map-blush.vercel.app/" target="_blank" rel="noopener" class="btn btn-primary btn-blue">
+              <span>🚀 세계 지도 열기</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
           </div>
         </div>
 
