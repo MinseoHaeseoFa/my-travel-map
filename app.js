@@ -184,24 +184,57 @@ async function fetchWeatherForCoords(lat, lon, fallbackLabel) {
   const condEl = document.getElementById('weather-cond');
   const locEl = document.getElementById('weather-location');
 
+  let temp = null;
+  let condText = null;
+
+  // 1차: Open-Meteo 실시간 날씨
   try {
-    const weatherPromise = fetch(
+    const res = await fetch(
       `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code&timezone=auto`
-    ).then(r => r.json());
-
-    const geoPromise = fetch(
-      `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=ko`
-    ).then(r => r.json()).catch(() => null);
-
-    const [weatherJson, geoJson] = await Promise.all([weatherPromise, geoPromise]);
-
-    if (weatherJson && weatherJson.current) {
-      const temp = Math.round(weatherJson.current.temperature_2m);
-      const code = weatherJson.current.weather_code;
-      tempEl.textContent = `${temp}°`;
-      condEl.textContent = weatherCodeToLabel(code);
+    );
+    if (res.ok) {
+      const weatherJson = await res.json();
+      if (weatherJson && weatherJson.current) {
+        temp = Math.round(weatherJson.current.temperature_2m);
+        condText = weatherCodeToLabel(weatherJson.current.weather_code);
+      }
     }
+  } catch (e) {
+    console.warn('Open-Meteo fallback:', e);
+  }
 
+  // 2차 백업: wttr.in JSON API
+  if (temp === null) {
+    try {
+      const res2 = await fetch(`https://wttr.in/${lat},${lon}?format=j1`);
+      if (res2.ok) {
+        const wJson = await res2.json();
+        const cur = wJson?.current_condition?.[0];
+        if (cur) {
+          temp = Math.round(Number(cur.temp_C));
+          const desc = (cur.lang_ko?.[0]?.value || cur.weatherDesc?.[0]?.value || '맑음').trim();
+          condText = `${desc} 🌤️`;
+        }
+      }
+    } catch (e2) {
+      console.warn('wttr.in fallback failed:', e2);
+    }
+  }
+
+  if (temp !== null) {
+    tempEl.textContent = `${temp}°`;
+    condEl.textContent = condText || '맑음 🌤️';
+  } else {
+    tempEl.textContent = '--°';
+    condEl.textContent = '날씨 일시 오류';
+  }
+
+  // 한국어 지역명 역지오코딩
+  try {
+    const geoRes = await fetch(
+      `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=ko`
+    );
+    const geoJson = geoRes.ok ? await geoRes.json() : null;
     if (geoJson) {
       const place = [geoJson.city || geoJson.principalSubdivision, geoJson.locality]
         .filter(Boolean)
@@ -212,11 +245,26 @@ async function fetchWeatherForCoords(lat, lon, fallbackLabel) {
     } else {
       locEl.textContent = fallbackLabel;
     }
-  } catch (err) {
-    console.error('Weather fetch error:', err);
-    condEl.textContent = '날씨 확인 실패';
+  } catch {
     locEl.textContent = fallbackLabel;
   }
+}
+
+async function fallbackIpOrDefaultWeather(reasonLabel) {
+  try {
+    const res = await fetch('https://api.bigdatacloud.net/data/reverse-geocode-client?localityLanguage=ko');
+    if (res.ok) {
+      const geo = await res.json();
+      if (geo && typeof geo.latitude === 'number' && typeof geo.longitude === 'number') {
+        const label = [geo.city || geo.principalSubdivision, geo.locality].filter(Boolean).slice(0, 2).join(' ') || reasonLabel;
+        await fetchWeatherForCoords(geo.latitude, geo.longitude, label);
+        return;
+      }
+    }
+  } catch (e) {
+    console.warn('IP geo fallback failed:', e);
+  }
+  await fetchWeatherForCoords(36.8151, 127.1139, reasonLabel);
 }
 
 function loadLocationWeather() {
@@ -224,7 +272,7 @@ function loadLocationWeather() {
   locEl.textContent = '내 위치 확인 중...';
 
   if (!navigator.geolocation) {
-    fetchWeatherForCoords(36.8151, 127.1139, '천안시 (기본 위치)');
+    fallbackIpOrDefaultWeather('천안시 (기본 위치)');
     return;
   }
 
@@ -233,7 +281,7 @@ function loadLocationWeather() {
       fetchWeatherForCoords(pos.coords.latitude, pos.coords.longitude, '현재 내 위치');
     },
     () => {
-      fetchWeatherForCoords(36.8151, 127.1139, '천안시 (위치 권한 미허용)');
+      fallbackIpOrDefaultWeather('천안시 (기본 위치)');
     },
     { enableHighAccuracy: false, timeout: 7000, maximumAge: 300000 }
   );
