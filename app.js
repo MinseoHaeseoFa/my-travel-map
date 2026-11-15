@@ -292,10 +292,11 @@ async function loadRealAchievements() {
   if (syncBadge) syncBadge.textContent = '동기화 중...';
 
   try {
+    const ts = Date.now();
     const [koreaRes, worldRes, mountainRes] = await Promise.all([
-      fetch(`${GOOGLE_SCRIPT_URL}?action=korea`).then(r => r.json()).catch(() => null),
-      fetch(`${GOOGLE_SCRIPT_URL}?action=world`).then(r => r.json()).catch(() => null),
-      fetch(`${GOOGLE_SCRIPT_URL}?action=mountain`).then(r => r.json()).catch(() => null)
+      fetch(`${GOOGLE_SCRIPT_URL}?action=korea&_t=${ts}`, { cache: 'no-store' }).then(r => r.json()).catch(() => null),
+      fetch(`${GOOGLE_SCRIPT_URL}?action=world&_t=${ts}`, { cache: 'no-store' }).then(r => r.json()).catch(() => null),
+      fetch(`${GOOGLE_SCRIPT_URL}?action=mountain&_t=${ts}`, { cache: 'no-store' }).then(r => r.json()).catch(() => null)
     ]);
 
     const koreaData = (koreaRes && koreaRes.korea) ? koreaRes.korea : {};
