@@ -632,7 +632,7 @@ html, body {
 
 .trail-cards-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 18px;
 }
 
@@ -679,6 +679,40 @@ html, body {
   background: rgba(255, 255, 255, 0.92);
   color: var(--text-main);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.tag-planner {
+  background: rgba(255, 251, 235, 0.95);
+  color: #B45309;
+  border: 1px solid rgba(253, 230, 138, 0.9);
+}
+
+/* 나의 여행 플래너 카드 (신규 연결) */
+.trail-card-planner {
+  border-color: rgba(253, 230, 138, 0.85);
+  box-shadow: 0 10px 24px rgba(180, 130, 24, 0.1), 0 1px 4px rgba(180, 130, 24, 0.06);
+}
+
+.trail-arrow-planner {
+  background: #FFFBEB;
+  color: #B45309;
+}
+
+.planner-action {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 5px 13px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #FFF7E6, #FEF3C7);
+  border: 1px solid rgba(253, 230, 138, 0.9);
+  color: #B45309;
+  font-size: 0.79rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
 }
 
 .trail-body {
@@ -770,6 +804,12 @@ html, body {
 }
 
 /* 태블릿 / 모바일 반응형 */
+@media (max-width: 1180px) {
+  .trail-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 1024px) {
   .app-shell {
     grid-template-columns: 1fr;
@@ -783,12 +823,14 @@ html, body {
     justify-content: space-around;
     padding: 10px 8px;
     border-radius: 22px;
+    gap: 6px;
   }
 
   .rail-item {
     flex: 1;
     width: auto;
     padding: 8px 4px;
+    min-width: 0;
   }
 
   .hero-grid {
@@ -843,5 +885,29 @@ html, body {
   .achievement-section {
     padding: 18px 16px;
     border-radius: 22px;
+  }
+
+  .nav-rail {
+    gap: 2px;
+    padding: 8px 4px;
+  }
+
+  .rail-item {
+    gap: 3px;
+    padding: 7px 2px;
+  }
+
+  .rail-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .rail-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .rail-label {
+    font-size: 10px;
   }
 }

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>나의 여행 지도 (My Travel Map) | 쿠사리님의 여행 허브</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=20261118a">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Noto+Serif+KR:wght@600;700&family=Pretendard:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -53,6 +53,17 @@
           </svg>
         </span>
         <span class="rail-label">100대 명산</span>
+      </a>
+
+      <a href="https://my-travel-planner-kohl.vercel.app/" class="rail-item" title="나의 여행 플래너 (오프라인 여행 지갑)">
+        <span class="rail-icon rail-logo-planner">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" fill="#FFFBEB" stroke="#F59E0B" stroke-width="1.8"/>
+            <path d="M16.2 7.8l-2.6 6.2-6.2 2.6 2.6-6.2z" fill="#F59E0B"/>
+            <circle cx="12" cy="12" r="1.15" fill="#FFFFFF"/>
+          </svg>
+        </span>
+        <span class="rail-label">플래너</span>
       </a>
     </aside>
 
@@ -169,8 +180,8 @@
       <section class="achievement-section">
         <div class="section-head">
           <div>
-            <h2 class="section-title">나의 Trail Log 달성율</h2>
-            <p class="section-sub">구글 시트 실시간 기록과 연동된 3대 여행 지도 현황입니다. 카드를 누르면 바로 이동합니다.</p>
+            <h2 class="section-title">나의 Trail Log 달성율 &amp; 여행 플래너</h2>
+            <p class="section-sub">구글 시트 실시간 기록과 연동된 3대 여행 지도 현황과, 다가올 여행을 준비하는 플래너입니다. 카드를 누르면 바로 이동합니다.</p>
           </div>
           <button type="button" id="btn-sync-refresh" class="view-all-pill">
             <span>🔄 달성율 새로고침</span>
@@ -246,6 +257,26 @@
               </div>
             </div>
           </a>
+
+          <!-- 4. 나의 여행 플래너 (신규 연결) -->
+          <a href="https://my-travel-planner-kohl.vercel.app/" class="trail-card trail-card-planner" title="나의 여행 플래너 — 오프라인 여행 지갑">
+            <div class="trail-thumb-wrap">
+              <img src="images/planner-cover.jpg" alt="나의 여행 플래너 — 여행 수첩과 나침반, 지도" class="trail-thumb">
+              <span class="trail-tag tag-planner">🧭 NEW · 여행 플래너</span>
+            </div>
+            <div class="trail-body">
+              <div class="trail-top">
+                <div>
+                  <h3 class="trail-name">나의 여행 플래너</h3>
+                  <p class="trail-stat-text">7탭 · 오프라인 예약 지갑</p>
+                </div>
+                <span class="trail-arrow trail-arrow-planner">›</span>
+              </div>
+              <div class="trail-progress-row">
+                <span class="planner-action">여행 계획 세우기 <span aria-hidden="true">→</span></span>
+              </div>
+            </div>
+          </a>
         </div>
       </section>
 
@@ -255,6 +286,6 @@
     </div>
   </div>
 
-  <script src="app.js?v=20261115c"></script>
+  <script src="app.js?v=20261118a"></script>
 </body>
 </html>
