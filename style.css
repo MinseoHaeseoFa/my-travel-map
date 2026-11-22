@@ -104,6 +104,32 @@ html, body {
   gap: 24px;
 }
 
+/* 🏡 쿠사리 타운 바로가기 (1단계 사이트 공통) */
+.town-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 10px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--bg-pill);
+  border: 1.5px solid var(--border-soft);
+  box-shadow: var(--shadow-card);
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.town-link:hover {
+  background: var(--bg-surface);
+  color: var(--accent-blue);
+  transform: translateY(-1px);
+}
+
 /* 상단 헤더 */
 .top-header {
   display: flex;
