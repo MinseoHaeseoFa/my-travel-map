@@ -5,7 +5,7 @@
  * - Google Apps Script 실시간 달성율 연계 (국내 167 · 세계 195 · 명산 100)
  */
 
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwylu_1JxOFwI66iI3X0Fc7IQz7PiA5zJKjrjZkvNF1XzPKVzmvLZSHnB-bilwVdawE/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz3HYsPK_9tiDBRy6Iw2d4lXH9h1y0HJ1w3i-Umldh5Jmuz6bEOlB0P6BO17ozgL66p/exec';
 
 const DESTINATIONS = [
   {
